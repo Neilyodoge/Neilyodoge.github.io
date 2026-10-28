@@ -4,7 +4,7 @@
   <section class="panel archive-panel main-column">
     <div class="page-heading"><span class="eyebrow">ALL POSTS</span><h1>归档</h1><p>按时间回看这些记录。</p></div>
     {% for month, month_posts in archive.items() %}
-    <section class="archive-month"><h2>{{ month }}</h2><div class="archive-items">
+    <section class="archive-month" id="{{ month }}"><h2>{{ month }}</h2><div class="archive-items">
       {% for post in month_posts %}<a href="{{ post.url }}"><time datetime="{{ post.date }}">{{ post.date }}</time><span>{{ post.title }}</span></a>{% endfor %}
     </div></section>
     {% endfor %}

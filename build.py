@@ -130,6 +130,21 @@ def main() -> None:
     }
     for old_path, slug in legacy_routes.items():
         write_page(old_path + "/index.html", "redirect.html", {"target": f"/article/{slug}/"}, env)
+    for old_path, target in {
+        "archives": "/archive/",
+        "categories": "/category/",
+        "tags": "/tag/",
+        "contact": "/about/",
+        "message": "/about/",
+        "links": "/about/",
+        "page/2": "/archive/",
+        "archives/page/2": "/archive/",
+    }.items():
+        write_page(old_path + "/index.html", "redirect.html", {"target": target}, env)
+    for month in archive:
+        year, number = month.split("-")
+        write_page(f"archives/{year}/index.html", "redirect.html", {"target": "/archive/"}, env)
+        write_page(f"archives/{year}/{number}/index.html", "redirect.html", {"target": f"/archive/#{month}"}, env)
     search = [{"title": p["title"], "date": p["date"], "category": p["category"], "tags": p["tags"], "summary": p["summary"], "plain": p["plain"], "url": p["url"], "cover": p["cover"]} for p in posts]
     (DIST / "search-index.json").write_text(json.dumps(search, ensure_ascii=False), encoding="utf-8")
     urls = ["/", "/archive/", "/search/", "/category/", "/tag/", "/about/"] + [p["url"] for p in posts]
