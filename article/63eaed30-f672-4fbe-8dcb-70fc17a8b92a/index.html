@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>小嗯的Unity光照文档 | Neilyodog Blog</title>
+  <meta name="description" content="Lighting">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="小嗯的Unity光照文档">
+  <meta property="og:description" content="Lighting">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2023-02-08">2023-02-08</time><span class="meta-dot">·</span><a href="/category/%E5%97%AF%E4%B9%8B%E5%AE%9D%E5%BA%93/">嗯之宝库</a></div><h1>小嗯的Unity光照文档</h1><p>Lighting</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E5%9F%BA%E7%A1%80/"># 基础</a><a href="/tag/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"># 学习总结</a></div>
+      <div class="article-content"><h3>Static选项</h3>
+<p><img src="/media/5bfc1922-2440-4dd5-9e70-62810cf0ea33.png" alt="文章配图" /></p>
+<p>Contribute GI：</p>
+<p>Occluder Static：unity 自带遮挡剔除同</p>
+<p>Occludee Static： 同上</p>
+<p>Batching Static：静态和批用</p>
+<p>Navigation Static：寻路</p>
+<p>Off Mesh Link Generation：同上</p>
+<p>Reflection Probe Static：</p>
+<h2>Baked Indirect模式下</h2>
+<p>其实大同小异，理解各种烘焙模式烘焙的内容就可以</p>
+<h3>Direction Light</h3>
+<p>多个平行光会在addlight里算</p>
+<p><img src="/media/91a2a03c-00d5-4d23-a01f-768644b95342.png" alt="文章配图" /></p>
+<p><img src="/media/8ef57077-5e77-412a-9c5a-8f08c70f7b3f.png" alt="文章配图" /></p>
+<h3>Light Probes</h3>
+<ul>
+<li>平行光对于LightProbes的影响</li>
+</ul>
+<p>当平行光为Baked模式时，平行光会记录进LightProbes中</p>
+<p><img src="/media/14c11f3e-ccd0-49f4-8bd7-e2b5c662b3a2.png" alt="文章配图" /></p>
+<p>当平行光为Mixed式时，平行光不影响LightProbes（所以一般动态物体直接GetMainLight）</p>
+<p>这里需要注意一下，Mixed模式，probe也会被染上颜色哭哭。所以还是shader验证出来的</p>
+<p><img src="/media/c1c37c61-9db2-4904-891f-9fc5c52e6372.png" alt="文章配图" /></p>
+<p>当平行光为Realtime时，同上</p>
+<p><strong>（当然，烘完修改light模式不修改是不影响的）</strong></p>
+<ul>
+<li>对于LightMode的影响</li>
+</ul>
+<p>在**Baked Indirect **模式下</p>
+<p>当点光源为mix模式，会只烘焙(这里的<strong>烘焙包括Lightmap和Probes</strong>)间接光</p>
+<p>当点光源为Baked模式，会烘焙间接光和直接光</p>
+<p>仔细看LightProbes也会受到不同模式下的影响</p>
+<p><img src="/media/462d47cf-7124-41c8-a5dd-f66e3b10ee14.png" alt="文章配图" /></p>
+<p>无论<strong>点光源</strong>还是 <strong>reflection probes</strong> 都是存进 <strong>Light Probe Group</strong> 中每一个点中的</p>
+<!-- 原 Notion 嵌入块 37ef24dc-b205-4061-bd33-94bd6dc09206 未公开源地址 -->
+<ul>
+<li>光照信息，点光源烘焙（LightProbes）</li>
+</ul>
+<p>首先因为卡渲染，优先考虑视觉正确而不是能量守恒的前提下</p>
+<p>推荐用空对象指定 Anchor Override 的方法。同时应该还可以减少LightProbes的数量</p>
+<p><img src="/media/d80afcbf-a190-4c37-b612-33bde5315c6b.png" alt="文章配图" /></p>
+<p>配合shader中的 LightProbes 强度</p>
+<p><img src="/media/fdbff7c5-d5c1-4007-b240-2b560fca1794.png" alt="文章配图" /></p>
+<p>就可以得到以下的结果</p>
+<p><img src="/media/a7a40a6e-cf55-4a39-8bc1-1e53f1442640.png" alt="文章配图" /></p>
+<ul>
+<li>自发光</li>
+</ul>
+<p>这样设置的话，当自发光的物体不需要接收lightmap时。这样设置</p>
+<p>（Contribute GI 是用来影响其他物体的，如果去掉的话，自发光就不会作为GI的贡献影响其他物体了）</p>
+<p><img src="/media/4d988dc1-f41e-451b-89c5-232d89b063f6.png" alt="文章配图" /></p>
+<p><img src="/media/54de87d7-d4b4-4f28-8e6a-0d7f4f024245.png" alt="文章配图" /></p>
+<p>正常lightProbe烘焙效果</p>
+<p><img src="/media/12d318fe-a05c-4310-973b-dc8f27509419.gif" alt="自发光LightProbegif" /></p>
+<ul>
+<li>灯光参数</li>
+</ul>
+<p><strong>Indirect Multiplier：<strong>使用此值来改变间接光的强度。如果将Indirect Multiplier设置为小于1 的值，则反射光会随着每次反射而变暗。大于1的值使每次反弹时光线更亮。例如，当阴影中的</strong>黑暗表面（如洞穴内部）需要更亮以使细节可见时</strong>，这很有用。如果您想使用Enlighten Realtime Global Illumination，但又想限制单个实时 Light 使其仅发射直接光，请将其Indirect Multiplier设置为0。</p>
+<p>但实际经过测试，这个参数大于1的时候会超过Range的范围，从而影响LightProbes</p>
+<p><img src="/media/5239b744-d1a0-4ff9-b75c-e2eca7580c51.png" alt="文章配图" /></p>
+<p>另外也可以用来提高遮蔽内部亮度</p>
+<p><img src="/media/f02a29f9-6eb6-4224-a6a5-982ce5187b87.png" alt="文章配图" /></p>
+<p><strong>Baked Shadow Angle</strong></p>
+<p><img src="/media/e2e8e452-9dac-4ccf-afde-03357c887acd.png" alt="文章配图" /></p>
+<h3>Reflection probes</h3>
+<p>参考</p>
+<p><a href="https://docs.unity3d.com/cn/current/Manual/AdvancedRefProbe.html">https://docs.unity3d.com/cn/current/Manual/AdvancedRefProbe.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/35495074">https://zhuanlan.zhihu.com/p/35495074</a></p>
+<p>实现可旋转的Reflection Probe <a href="https://zhuanlan.zhihu.com/p/116923312">https://zhuanlan.zhihu.com/p/116923312</a></p>
+<p>Local CubeMap <a href="https://community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/reflections-based-on-local-cubemaps-in-unity">https://community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/reflections-based-on-local-cubemaps-in-unity</a></p>
+<h3>Box Projection Off/On 区别简述</h3>
+<p><img src="/media/91a71023-3103-4409-9d84-f3f442fd6324.png" alt="文章配图" /></p>
+<h2>踩过的坑</h2>
+<ul>
+<li>LightMap失效</li>
+</ul>
+<p>查查金属度，尤其是在debug lightmap有效果的时候</p>
+<h3>可参考文章</h3>
+<ul>
+<li>LookDev</li>
+</ul>
+<p><a href="https://shimo.im/docs/CJyH6QKykxxkKYk3/">https://shimo.im/docs/CJyH6QKykxxkKYk3/</a> LookDev 标准场景</p>
+<ul>
+<li>官方文档</li>
+</ul>
+<p>file:///E:/unity/2020.3.28f1c1/Editor/Data/Documentation/en/Manual/class-Light.html</p>
+<ul>
+<li>Unity烘焙技术</li>
+</ul>
+<p><a href="http://blog.coolcoding.cn/?p=949">http://blog.coolcoding.cn/?p=949</a></p>
+<p><a href="http://blog.coolcoding.cn/?p=1089">http://blog.coolcoding.cn/?p=1089</a></p>
+<ul>
+<li>兽兽知乎</li>
+</ul>
+<p><a href="https://zhuanlan.zhihu.com/p/443399019">https://zhuanlan.zhihu.com/p/443399019</a></p>
+<ul>
+<li>kerry</li>
+</ul>
+<p><a href="https://zhuanlan.zhihu.com/p/126362480?tdsourcetag=s_pctim_aiomsg">https://zhuanlan.zhihu.com/p/126362480?tdsourcetag=s_pctim_aiomsg</a></p>
+<ul>
+<li>栋哥Lightmap官方教程</li>
+</ul>
+<p><a href="https://learn.u3d.cn/tutorial/unity-progressive-lightmapper#621c38b7a1f573001fa27d9c">https://learn.u3d.cn/tutorial/unity-progressive-lightmapper#621c38b7a1f573001fa27d9c</a></p>
+<ul>
+<li>某大佬比较完善的</li>
+</ul>
+<p><a href="https://chrisbrejon.com/">https://chrisbrejon.com/</a></p>
+<h3>HDRP</h3>
+<ul>
+<li>官方</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/NkpxtaeLBABXil4DVfIqRw">https://mp.weixin.qq.com/s/NkpxtaeLBABXil4DVfIqRw</a></p>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/"><small>上一篇</small><strong>变速闪烁</strong></a><a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/"><small>下一篇</small><strong>效果分享</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

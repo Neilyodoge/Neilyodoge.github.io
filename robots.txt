@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://neilyodoge.github.io/sitemap.xml

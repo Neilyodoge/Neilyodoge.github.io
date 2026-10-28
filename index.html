@@ -1,1801 +1,260 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Neilyodog的小站">
-    <meta name="description" content="Neilyodog的小站">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <title>Neilyodog的小站</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-
-
-    <!-- index cover -->
-    <!-- <link rel="stylesheet preload" type="text/css" href="/css/indexcover.css"> -->
-    <style>
-        .carousel-control {
-            width: 45px;
-            height: 45px;
-            line-height: 55px;
-            border-radius: 45px;
-            background: transparent;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        #prev-cover {
-            position: absolute;
-            top: 48%;
-            left: 8px;
-        }
-        
-        #next-cover {
-            position: absolute;
-            top: 48%;
-            right: 8px;;
-        }
-        
-        #prev-cover i {
-            margin-right: 3px;
-        }
-        
-        #next-cover i {
-            margin-left: 3px;
-        }
-        
-        .carousel-control:hover {
-            background-color: rgba(0, 0, 0, .4);
-        }
-        
-        .carousel-control i {
-            color: #fff;
-            font-size: 2.4rem;
-        }
-    </style>
-
-
-
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
-
-
-
-
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
-
-
-
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Neilyodog的小站</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Neilyodog的小站</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
-    </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>Neilyodog Blog | 喜欢而已</title>
+  <meta name="description" content="喜欢而已">
+  <link rel="canonical" href="https://neilyodoge.github.io/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Neilyodog Blog">
+  <meta property="og:description" content="喜欢而已">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/site-hero.webp">
+  <meta property="og:url" content="https://neilyodoge.github.io/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="home-page">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
-
-</header>
-
-    
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-        <div id="prev-cover" class="left waves-effect carousel-control">
-            <i class="icon fa fa-angle-left"></i>
-        </div>
-        <div id="next-cover" class="right waves-effect carousel-control">
-            <i class="icon fa fa-angle-right"></i>
-        </div>
-    
-
-    <div class="carousel-item  white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                来根薯条？
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "“在所有人眼中都平凡又渺小的我们 却在彼此的眼中闪闪发亮”",
-                            
-                                "要来点薯条嘛",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
+  </header>
+<section class="hero" style="--hero-image: url('/media/site-hero.webp')">
+  <div class="hero-shade"></div>
+  <div class="hero-content"><h1>Neilyodog Blog</h1><p>喜欢而已 🌞</p></div>
+  <a class="hero-down" href="#articles" aria-label="前往文章列表">⌄</a>
+</section>
+<main class="shell home-shell" id="articles">
+  <div class="main-column">
+    <div class="section-heading"><div><span class="eyebrow">WRITING & NOTES</span><h2>最新文章</h2></div><a href="/archive/">查看归档 →</a></div>
+    <div class="post-grid"><article class="post-card">
+  <a class="post-cover" href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" aria-label="阅读 效果分享">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2023-02-09">2023-02-09</time><span class="meta-dot">·</span><a href="/category/%E7%A2%8E%E7%89%87%E6%9D%82%E6%96%87/">碎片杂文</a></div>
+    <h3><a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/">效果分享</a></h3>
+    <p>没总结的，随机更新</p>
+    <a class="read-more" href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" aria-label="阅读 小嗯的Unity光照文档">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2023-02-08">2023-02-08</time><span class="meta-dot">·</span><a href="/category/%E5%97%AF%E4%B9%8B%E5%AE%9D%E5%BA%93/">嗯之宝库</a></div>
+    <h3><a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/">小嗯的Unity光照文档</a></h3>
+    <p>Lighting</p>
+    <a class="read-more" href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" aria-label="阅读 变速闪烁">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2023-02-07">2023-02-07</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/">变速闪烁</a></h3>
+    <p>仿塞尔达效果实现</p>
+    <a class="read-more" href="/article/d1a23618-6182-4906-8895-982df57c1ef5/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" aria-label="阅读 Renderdoc">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2023-02-07">2023-02-07</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div>
+    <h3><a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/">Renderdoc</a></h3>
+    <p>截帧基本功</p>
+    <a class="read-more" href="/article/26660057-7224-44c1-97b4-d098fc6cb662/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" aria-label="阅读 VFX透明描边">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2023-01-11">2023-01-11</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/">VFX透明描边</a></h3>
+    <p>VFX_处理透明描边渲染顺序</p>
+    <a class="read-more" href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/" aria-label="阅读 传递函数">
+<img src="/thumbs/cover-b28f4082-ee85-46b4-a3c4-5c0dcec6b64a.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-11-15">2022-11-15</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/">传递函数</a></h3>
+    <p>也就是熟知的伽马矫正</p>
+    <a class="read-more" href="/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/" aria-label="阅读 卡渲树木制作流程">
+<img src="/thumbs/cover-0a2df4f7-9fa3-4136-818f-e97b70175b13.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-10-05">2022-10-05</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/">卡渲树木制作流程</a></h3>
+    <p>speedTree基础</p>
+    <a class="read-more" href="/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/627404f1-9b81-4f89-9a60-38ad32b45e04/" aria-label="阅读 renderFeature 基础">
+<img src="/thumbs/cover-627404f1-9b81-4f89-9a60-38ad32b45e04.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-07-11">2022-07-11</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/627404f1-9b81-4f89-9a60-38ad32b45e04/">renderFeature 基础</a></h3>
+    <p>小学三年级都会写的renderFeature</p>
+    <a class="read-more" href="/article/627404f1-9b81-4f89-9a60-38ad32b45e04/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/urp-depth-of-field-artifact/" aria-label="阅读 URP景深的问题">
+<img src="/thumbs/legacy-urp-depth-01.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-07-11">2022-07-11</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/urp-depth-of-field-artifact/">URP景深的问题</a></h3>
+    <p>URP 高斯景深在焦点位置出现黑线时的定位与调整记录。</p>
+    <a class="read-more" href="/article/urp-depth-of-field-artifact/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/8e2ed345-b48c-4193-b8b1-428b959e4bbb/" aria-label="阅读 Mali Offline Compiler 基础">
+<img src="/thumbs/cover-8e2ed345-b48c-4193-b8b1-428b959e4bbb.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-06-15">2022-06-15</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/8e2ed345-b48c-4193-b8b1-428b959e4bbb/">Mali Offline Compiler 基础</a></h3>
+    <p>一个性能检测工具</p>
+    <a class="read-more" href="/article/8e2ed345-b48c-4193-b8b1-428b959e4bbb/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/4ba39267-4fa9-4398-8cc6-e4c98b62a94a/" aria-label="阅读 优化Sin函数">
+<img src="/thumbs/cover-4ba39267-4fa9-4398-8cc6-e4c98b62a94a.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-05-18">2022-05-18</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/4ba39267-4fa9-4398-8cc6-e4c98b62a94a/">优化Sin函数</a></h3>
+    <p>不过实际还是要具体测，移动端cpu不一样</p>
+    <a class="read-more" href="/article/4ba39267-4fa9-4398-8cc6-e4c98b62a94a/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/be15d687-5d6c-4473-9c53-3d1a55bb2b33/" aria-label="阅读 LookDev 标准场景">
+<img src="/thumbs/cover-be15d687-5d6c-4473-9c53-3d1a55bb2b33.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-04-28">2022-04-28</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div>
+    <h3><a href="/article/be15d687-5d6c-4473-9c53-3d1a55bb2b33/">LookDev 标准场景</a></h3>
+    <p>制作方法和意义</p>
+    <a class="read-more" href="/article/be15d687-5d6c-4473-9c53-3d1a55bb2b33/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/ba4d06f0-4fd8-4f7f-92e0-378015d86dd3/" aria-label="阅读 原神植被渲染分析">
+<img src="/thumbs/cover-ba4d06f0-4fd8-4f7f-92e0-378015d86dd3.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-03-21">2022-03-21</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div>
+    <h3><a href="/article/ba4d06f0-4fd8-4f7f-92e0-378015d86dd3/">原神植被渲染分析</a></h3>
+    <p>游戏分析</p>
+    <a class="read-more" href="/article/ba4d06f0-4fd8-4f7f-92e0-378015d86dd3/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/002c5404-c78d-4115-8c9c-b809e59e3e1c/" aria-label="阅读 砍掉项目学习总结_jiuge">
+<img src="/thumbs/cover-002c5404-c78d-4115-8c9c-b809e59e3e1c.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-03-01">2022-03-01</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div>
+    <h3><a href="/article/002c5404-c78d-4115-8c9c-b809e59e3e1c/">砍掉项目学习总结_jiuge</a></h3>
+    <p>Rip</p>
+    <a class="read-more" href="/article/002c5404-c78d-4115-8c9c-b809e59e3e1c/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/d47a3e64-61f7-4ca0-abc3-78657e4fb79b/" aria-label="阅读 小嗯的图像渲染管线架构文档">
+<img src="/thumbs/cover-d47a3e64-61f7-4ca0-abc3-78657e4fb79b.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2022-02-18">2022-02-18</time><span class="meta-dot">·</span><a href="/category/%E5%97%AF%E4%B9%8B%E5%AE%9D%E5%BA%93/">嗯之宝库</a></div>
+    <h3><a href="/article/d47a3e64-61f7-4ca0-abc3-78657e4fb79b/">小嗯的图像渲染管线架构文档</a></h3>
+    <p>Render Pipeline </p>
+    <a class="read-more" href="/article/d47a3e64-61f7-4ca0-abc3-78657e4fb79b/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/e395c14d-ec97-402b-89c8-d7bd84d22e53/" aria-label="阅读 shader GUI 基础">
+<img src="/thumbs/cover-e395c14d-ec97-402b-89c8-d7bd84d22e53.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2021-10-24">2021-10-24</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/e395c14d-ec97-402b-89c8-d7bd84d22e53/">shader GUI 基础</a></h3>
+    <p>小学三年级都会写的shaderGUI</p>
+    <a class="read-more" href="/article/e395c14d-ec97-402b-89c8-d7bd84d22e53/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/5d737f3f-fe0d-4a6b-8422-08393a49cf86/" aria-label="阅读 半透明剔除Dither">
+<img src="/thumbs/cover-5d737f3f-fe0d-4a6b-8422-08393a49cf86.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2021-07-02">2021-07-02</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/5d737f3f-fe0d-4a6b-8422-08393a49cf86/">半透明剔除Dither</a></h3>
+    <p>Dither / Screen-Door Transparency</p>
+    <a class="read-more" href="/article/5d737f3f-fe0d-4a6b-8422-08393a49cf86/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2/" aria-label="阅读 枪械相关效果迭代">
+<img src="/thumbs/cover-bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2021-01-25">2021-01-25</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2/">枪械相关效果迭代</a></h3>
+    <p>枪械相关内容</p>
+    <a class="read-more" href="/article/bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/9e4ab212-315e-4773-b6fc-f7a7558ff2de/" aria-label="阅读 模拟光学瞄具 ">
+<img src="/thumbs/cover-9e4ab212-315e-4773-b6fc-f7a7558ff2de.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2020-11-27">2020-11-27</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/9e4ab212-315e-4773-b6fc-f7a7558ff2de/">模拟光学瞄具 </a></h3>
+    <p>模拟光学瞄具的效果和思路</p>
+    <a class="read-more" href="/article/9e4ab212-315e-4773-b6fc-f7a7558ff2de/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="post-card">
+  <a class="post-cover" href="/article/3e196a75-9d46-4d4d-9357-22664be5b111/" aria-label="阅读 贴图优化_第三套UV">
+<img src="/thumbs/cover-3e196a75-9d46-4d4d-9357-22664be5b111.webp" alt="" loading="lazy">  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="2020-01-08">2020-01-08</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div>
+    <h3><a href="/article/3e196a75-9d46-4d4d-9357-22664be5b111/">贴图优化_第三套UV</a></h3>
+    <p>更小的贴图，更好的效果</p>
+    <a class="read-more" href="/article/3e196a75-9d46-4d4d-9357-22664be5b111/">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article></div>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
     </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-
-
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                    <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/Neilyodoge" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:1838233556@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1838233556&website=www.oicqzone.com" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1838233556" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-    <a href="https://www.zhihu.com/people/top-78-71" class="tooltipped" target="_blank" data-tooltip="关注我的知乎" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu"></i>
-    </a>
-
-
-
-    <a href="https://www.artstation.com/neilyodog" class="tooltipped" target="_blank" data-tooltip="关注我的ArtStation" data-position="top" data-delay="50">
-        <i class="fa-brands fa-artstation"></i>
-    </a>
-
-
-
-</div>
-        </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
     </div>
-
-    
-        
-
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://digitalrune.github.io/DigitalRune-Documentation/media/Screen-Door-Transparency.gif');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">dither</div>
-                            <div class="description center-align">
-                                
-                                    半透明剔除dither
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2021/04/20/dither/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/images/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">ShaderGUI</div>
-                            <div class="description center-align">
-                                
-                                    ShaderGUI基础使用指南
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2021/10/24/shadergui/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://oimages2.shimonote.com/uploader-cache/gcnG8qnoOqXZnPVn.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190484-62beca7b76954e108c9194b1dc7864a6-0-687449df7d4d2b1435126094a31bcfc8&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">传递函数</div>
-                            <div class="description center-align">
-                                
-                                    简单描述了ACES中的传递函数。也就是常说的伽马校正
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/10/11/chuan-di-han-shu/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://oimages2.shimonote.com/uploader-cache/eVOCSBLA7a6B19Pb.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190565-44e5a203955040bcb902349f2d8567ea-0-b0338e25e3d50fbe24cfdaa83fe61e63&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">URP景深的问题</div>
-                            <div class="description center-align">
-                                
-                                    URP自带后处理 高斯景深的Artifact
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/11/urp-zi-dai-hou-chu-li-gao-si-jing-shen-de-artifact/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://uploader.shimo.im/f/boHzW4SWg8sP4lFs.png!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2NzMxOTEzMzEsImZpbGVHVUlEIjoibG9xZVdCcHlEQlNiMXZBbiIsImlhdCI6MTY3MzE5MTAzMSwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjoyMDQ2NzE3OH0.ZtlD3wtaJpFBnxjYZU-wG18mPzYy5xeYL4exNa7THuo');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">变速闪烁的效果</div>
-                            <div class="description center-align">
-                                
-                                    模拟塞尔达锁的效果
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2023/01/04/bian-su-shan-shuo-xiao-guo/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/images/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">RenderFeature基础</div>
-                            <div class="description center-align">
-                                
-                                    RenderFeature基础使用指南
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2022/07/11/xiao-ng-de-urp-hou-chu-li-wen-dang/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://oimages2.shimonote.com/uploader-cache/kOgCz2hMkW3L24eW.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190764-272c5e5f12ec4020ba47fc58186bcd7a-0-4e853cdaf90e119e4dacb07ae67cf829&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">RenderPipline整理</div>
-                            <div class="description center-align">
-                                
-                                    简单整理了一下渲染管线
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2021/06/02/render-pipeline-zheng-li/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/images/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">通过第三套UV提高模型精度</div>
-                            <div class="description center-align">
-                                
-                                    用更小的贴图大小，做到更好的效果。
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2020/11/27/tong-guo-di-san-tao-uv-ti-gao-mo-xing-jing-du/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://oimages2.shimonote.com/VSBI8FoParxpPk1B.gif?auth_key=1673190045-7aee1345716645a08e4984ca8c6545fd-0-a5236e7ccf351c5297b8ac50938dd65b&response-content-disposition=inline%3B+filename%3D%22%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif%22%3B+filename%2A%3DUTF-8%27%27%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif&x-image-process=image%2Fformat%2Cwebp');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">vfx-透明描边</div>
-                            <div class="description center-align">
-                                
-                                    特效材质功能-半透明描边
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2023/01/06/vfx-tou-ming-miao-bian/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('https://oimages2.shimonote.com/uploader-cache/RdfIsoZuK6ISauzY.gif/smxform_aW0hZ1UvZm8ybWF-LHdlYnA%2B?auth_key=1673190196-428a43c0f5d44167aa218aefa3aa4619-0-13d452a6f700c8344d1d020c22aefdd4&response-content-disposition=inline%3B+filename%3D%22MulUV.gif%22%3B+filename%2A%3DUTF-8%27%27MulUV.gif');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">枪械效果提升</div>
-                            <div class="description center-align">
-                                
-                                    枪械相关效果提升
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2021/02/15/qiang-jie-xiao-guo-ti-sheng/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/images/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">光学瞄具模拟</div>
-                            <div class="description center-align">
-                                
-                                    光学瞄具模拟
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2020/11/27/guang-xue-miao-ju/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-
-        function restartPlay() {
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            摘星星
-        </div>
-    </div>
-</div>
-
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-
-
-<div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;推荐文章</div>
-
-<div class="row">
-
-    
-    
-    <div class="col s12" >
-        
-             <div class="post-card" style="background-image: url('https://digitalrune.github.io/DigitalRune-Documentation/media/Screen-Door-Transparency.gif')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%95%88%E6%9E%9C/" class="category">效果</a>
-                        
-                    
-                </div>
-                <a href="/2021/04/20/dither/">
-                    <h3 class="post-title">dither</h3>
-                </a>
-                <p class="post-description">半透明剔除dither</p>
-                <a href="/2021/04/20/dither/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://picx.zhimg.com/v2-10adffeda5dde522a47fef53db8ffe95_1440w.jpg?source=172ae18b')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/" class="category">代码基础</a>
-                        
-                    
-                </div>
-                <a href="/2021/10/24/shadergui/">
-                    <h3 class="post-title">ShaderGUI</h3>
-                </a>
-                <p class="post-description">ShaderGUI基础使用指南</p>
-                <a href="/2021/10/24/shadergui/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://oimages2.shimonote.com/uploader-cache/gcnG8qnoOqXZnPVn.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190484-62beca7b76954e108c9194b1dc7864a6-0-687449df7d4d2b1435126094a31bcfc8&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E9%A2%9C%E8%89%B2%E6%A0%A1%E6%AD%A3/" class="category">颜色校正</a>
-                        
-                    
-                </div>
-                <a href="/2022/10/11/chuan-di-han-shu/">
-                    <h3 class="post-title">传递函数</h3>
-                </a>
-                <p class="post-description">简单描述了ACES中的传递函数。也就是常说的伽马校正</p>
-                <a href="/2022/10/11/chuan-di-han-shu/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://oimages2.shimonote.com/uploader-cache/eVOCSBLA7a6B19Pb.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190565-44e5a203955040bcb902349f2d8567ea-0-b0338e25e3d50fbe24cfdaa83fe61e63&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="category">渲染基础</a>
-                        
-                    
-                </div>
-                <a href="/2022/07/11/urp-zi-dai-hou-chu-li-gao-si-jing-shen-de-artifact/">
-                    <h3 class="post-title">URP景深的问题</h3>
-                </a>
-                <p class="post-description">URP自带后处理 高斯景深的Artifact</p>
-                <a href="/2022/07/11/urp-zi-dai-hou-chu-li-gao-si-jing-shen-de-artifact/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://uploader.shimo.im/f/boHzW4SWg8sP4lFs.png!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2NzMxOTEzMzEsImZpbGVHVUlEIjoibG9xZVdCcHlEQlNiMXZBbiIsImlhdCI6MTY3MzE5MTAzMSwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjoyMDQ2NzE3OH0.ZtlD3wtaJpFBnxjYZU-wG18mPzYy5xeYL4exNa7THuo')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%95%88%E6%9E%9C/" class="category">效果</a>
-                        
-                    
-                </div>
-                <a href="/2023/01/04/bian-su-shan-shuo-xiao-guo/">
-                    <h3 class="post-title">变速闪烁的效果</h3>
-                </a>
-                <p class="post-description">模拟塞尔达锁的效果</p>
-                <a href="/2023/01/04/bian-su-shan-shuo-xiao-guo/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://picx.zhimg.com/v2-6e1b6546a16abfed50341a0309873997_1440w.jpg?source=172ae18b')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="category">渲染基础</a>
-                        
-                    
-                </div>
-                <a href="/2022/07/11/xiao-ng-de-urp-hou-chu-li-wen-dang/">
-                    <h3 class="post-title">RenderFeature基础</h3>
-                </a>
-                <p class="post-description">RenderFeature基础使用指南</p>
-                <a href="/2022/07/11/xiao-ng-de-urp-hou-chu-li-wen-dang/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #C644FC 0%, #5856D6 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://oimages2.shimonote.com/uploader-cache/kOgCz2hMkW3L24eW.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190764-272c5e5f12ec4020ba47fc58186bcd7a-0-4e853cdaf90e119e4dacb07ae67cf829&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="category">渲染基础</a>
-                        
-                    
-                </div>
-                <a href="/2021/06/02/render-pipeline-zheng-li/">
-                    <h3 class="post-title">RenderPipline整理</h3>
-                </a>
-                <p class="post-description">简单整理了一下渲染管线</p>
-                <a href="/2021/06/02/render-pipeline-zheng-li/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #55EFCB 0%, #5BCAFF 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://uploader.shimo.im/f/qo2yi5jzNsCPq24F.png!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2NzIwODE5MjQsImZpbGVHVUlEIjoidjNWUHh5RER5Q1FXY3F3ciIsImlhdCI6MTY3MjA4MTYyNCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjoyMDQ2NzE3OH0.u948UtRFD3RBrbh1JAPXFm5TIk8_qI98D4lylYfNK2s')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%95%88%E6%9E%9C%E6%8F%90%E5%8D%87/" class="category">效果提升</a>
-                        
-                    
-                </div>
-                <a href="/2020/11/27/tong-guo-di-san-tao-uv-ti-gao-mo-xing-jing-du/">
-                    <h3 class="post-title">通过第三套UV提高模型精度</h3>
-                </a>
-                <p class="post-description">用更小的贴图大小，做到更好的效果。</p>
-                <a href="/2020/11/27/tong-guo-di-san-tao-uv-ti-gao-mo-xing-jing-du/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://oimages2.shimonote.com/VSBI8FoParxpPk1B.gif?auth_key=1673190045-7aee1345716645a08e4984ca8c6545fd-0-a5236e7ccf351c5297b8ac50938dd65b&response-content-disposition=inline%3B+filename%3D%22%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif%22%3B+filename%2A%3DUTF-8%27%27%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif&x-image-process=image%2Fformat%2Cwebp')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E7%89%B9%E6%95%88%E6%9D%90%E8%B4%A8/" class="category">特效材质</a>
-                        
-                    
-                </div>
-                <a href="/2023/01/06/vfx-tou-ming-miao-bian/">
-                    <h3 class="post-title">vfx-透明描边</h3>
-                </a>
-                <p class="post-description">特效材质功能-半透明描边</p>
-                <a href="/2023/01/06/vfx-tou-ming-miao-bian/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://oimages2.shimonote.com/uploader-cache/RdfIsoZuK6ISauzY.gif/smxform_aW0hZ1UvZm8ybWF-LHdlYnA%2B?auth_key=1673190196-428a43c0f5d44167aa218aefa3aa4619-0-13d452a6f700c8344d1d020c22aefdd4&response-content-disposition=inline%3B+filename%3D%22MulUV.gif%22%3B+filename%2A%3DUTF-8%27%27MulUV.gif')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%B5%81%E7%A8%8B%E5%8C%96-%E6%9E%AA%E6%A2%B0/" class="category">流程化-枪械</a>
-                        
-                    
-                </div>
-                <a href="/2021/02/15/qiang-jie-xiao-guo-ti-sheng/">
-                    <h3 class="post-title">枪械效果提升</h3>
-                </a>
-                <p class="post-description">枪械相关效果提升</p>
-                <a href="/2021/02/15/qiang-jie-xiao-guo-ti-sheng/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-             <div class="post-card" style="background-image: url('https://uploader.shimo.im/f/WYhHsFGCBUOg3DbJ.jpg!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2NzIwODE2NTYsImZpbGVHVUlEIjoicnRZVnJqeUNwVndrZ3hoZCIsImlhdCI6MTY3MjA4MTM1NiwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjoyMDQ2NzE3OH0.CjyDax3Txc6llmMYj1n8czQ8zy0S8noTFMDNMZ9GNno')">
-        
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/%E6%95%88%E6%9E%9C/" class="category">效果</a>
-                        
-                    
-                </div>
-                <a href="/2020/11/27/guang-xue-miao-ju/">
-                    <h3 class="post-title">光学瞄具模拟</h3>
-                </a>
-                <p class="post-description">光学瞄具模拟</p>
-                <a href="/2020/11/27/guang-xue-miao-ju/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-
-</div>
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/01/06/vfx-tou-ming-miao-bian/">
-                        <div class="card-image">
-                            
-                            <img src="https://oimages2.shimonote.com/VSBI8FoParxpPk1B.gif?auth_key=1673190045-7aee1345716645a08e4984ca8c6545fd-0-a5236e7ccf351c5297b8ac50938dd65b&response-content-disposition=inline%3B+filename%3D%22%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif%22%3B+filename%2A%3DUTF-8%27%27%25E9%2580%258F%25E6%2598%258E%25E6%258F%258F%25E8%25BE%25B9true.gif&x-image-process=image%2Fformat%2Cwebp" class="responsive-img" alt="vfx-透明描边">
-                            
-                            <span class="card-title">vfx-透明描边</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                特效材质功能-半透明描边
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-06
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%89%B9%E6%95%88%E6%9D%90%E8%B4%A8/" class="post-category">
-                                    特效材质
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%88%E6%9E%9C/">
-                            <span class="chip bg-color">效果</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%89%B9%E6%95%88%E6%9D%90%E8%B4%A8/">
-                            <span class="chip bg-color">特效材质</span>
-                        </a>
-                        
-                        <a href="/tags/%E9%80%8F%E6%98%8E%E6%8F%8F%E8%BE%B9/">
-                            <span class="chip bg-color">透明描边</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/01/04/bian-su-shan-shuo-xiao-guo/">
-                        <div class="card-image">
-                            
-                            <img src="https://uploader.shimo.im/f/boHzW4SWg8sP4lFs.png!thumbnail?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2NzMxOTEzMzEsImZpbGVHVUlEIjoibG9xZVdCcHlEQlNiMXZBbiIsImlhdCI6MTY3MzE5MTAzMSwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjoyMDQ2NzE3OH0.ZtlD3wtaJpFBnxjYZU-wG18mPzYy5xeYL4exNa7THuo" class="responsive-img" alt="变速闪烁的效果">
-                            
-                            <span class="card-title">变速闪烁的效果</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                模拟塞尔达锁的效果
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-04
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%95%88%E6%9E%9C/" class="post-category">
-                                    效果
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%88%E6%9E%9C/">
-                            <span class="chip bg-color">效果</span>
-                        </a>
-                        
-                        <a href="/tags/c/">
-                            <span class="chip bg-color">c#</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/10/11/chuan-di-han-shu/">
-                        <div class="card-image">
-                            
-                            <img src="https://oimages2.shimonote.com/uploader-cache/gcnG8qnoOqXZnPVn.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190484-62beca7b76954e108c9194b1dc7864a6-0-687449df7d4d2b1435126094a31bcfc8&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png" class="responsive-img" alt="传递函数">
-                            
-                            <span class="card-title">传递函数</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                简单描述了ACES中的传递函数。也就是常说的伽马校正
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%A2%9C%E8%89%B2%E6%A0%A1%E6%AD%A3/" class="post-category">
-                                    颜色校正
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/ACES/">
-                            <span class="chip bg-color">ACES</span>
-                        </a>
-                        
-                        <a href="/tags/%E9%A2%9C%E8%89%B2%E6%A0%A1%E6%AD%A3/">
-                            <span class="chip bg-color">颜色校正</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/11/urp-zi-dai-hou-chu-li-gao-si-jing-shen-de-artifact/">
-                        <div class="card-image">
-                            
-                            <img src="https://oimages2.shimonote.com/uploader-cache/eVOCSBLA7a6B19Pb.png/smxform_aW0hZ1UvYXV-by0vcmllbnQsMS8yZXNpemUsbV8sZml-LHdfMTkyMC8xdWFsaXR4LHFfNzUvZm8ybWF-LHdlYnA%2B?auth_key=1673190565-44e5a203955040bcb902349f2d8567ea-0-b0338e25e3d50fbe24cfdaa83fe61e63&response-content-disposition=inline%3B+filename%3D%22image.png%22%3B+filename%2A%3DUTF-8%27%27image.png" class="responsive-img" alt="URP景深的问题">
-                            
-                            <span class="card-title">URP景深的问题</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                URP自带后处理 高斯景深的Artifact
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    渲染基础
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Bug%E4%BF%AE%E5%A4%8D/">
-                            <span class="chip bg-color">Bug修复</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">渲染基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/07/11/xiao-ng-de-urp-hou-chu-li-wen-dang/">
-                        <div class="card-image">
-                            
-                            <img src="https://picx.zhimg.com/v2-6e1b6546a16abfed50341a0309873997_1440w.jpg?source=172ae18b" class="responsive-img" alt="RenderFeature基础">
-                            
-                            <span class="card-title">RenderFeature基础</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                RenderFeature基础使用指南
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    渲染基础
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">渲染基础</span>
-                        </a>
-                        
-                        <a href="/tags/RenderFeature/">
-                            <span class="chip bg-color">RenderFeature</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/10/24/shadergui/">
-                        <div class="card-image">
-                            
-                            <img src="https://picx.zhimg.com/v2-10adffeda5dde522a47fef53db8ffe95_1440w.jpg?source=172ae18b" class="responsive-img" alt="ShaderGUI">
-                            
-                            <span class="card-title">ShaderGUI</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                ShaderGUI基础使用指南
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    代码基础
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/ShaderGUI/">
-                            <span class="chip bg-color">ShaderGUI</span>
-                        </a>
-                        
-                        <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">代码基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 2</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
-</div>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
-
-    
-
-    <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2022-2023</span>
-            
-            <a href="/about" target="_blank">Neilyodog</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.6k</span>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Neilyodoge" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:1838233556@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1838233556&website=www.oicqzone.com" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1838233556" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-    <a href="https://www.zhihu.com/people/top-78-71" class="tooltipped" target="_blank" data-tooltip="关注我的知乎" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu"></i>
-    </a>
-
-
-
-    <a href="https://www.artstation.com/neilyodog" class="tooltipped" target="_blank" data-tooltip="关注我的ArtStation" data-position="top" data-delay="50">
-        <i class="fa-brands fa-artstation"></i>
-    </a>
-
-
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
-    }
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    
-
-    
-
-    <!-- 雪花特效 -->
-    
-
-    <!-- 鼠标星星特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
-            }
-        </script>
-    
-
-     
-        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-        <script src="/libs/others/TencentCaptcha.js"></script>
-        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
-    
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
-
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
 </body>
-
 </html>

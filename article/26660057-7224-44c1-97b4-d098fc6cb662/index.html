@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>Renderdoc | Neilyodog Blog</title>
+  <meta name="description" content="截帧基本功">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/26660057-7224-44c1-97b4-d098fc6cb662/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Renderdoc">
+  <meta property="og:description" content="截帧基本功">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-26660057-7224-44c1-97b4-d098fc6cb662.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/26660057-7224-44c1-97b4-d098fc6cb662/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-26660057-7224-44c1-97b4-d098fc6cb662.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2023-02-07">2023-02-07</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div><h1>Renderdoc</h1><p>截帧基本功</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E5%9F%BA%E7%A1%80/"># 基础</a><a href="/tag/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"># 学习总结</a></div>
+      <div class="article-content"><h2>功能</h2>
+<h3>测试毫秒数</h3>
+<p><img src="/media/64dccfd8-c1e3-42f0-8985-9cb3009e4921.png" alt="文章配图" /></p>
+<p>但有可能后面是其他单位</p>
+<p><strong>Tools - Settings - Event Browser</strong></p>
+<p>可以改成ms</p>
+<h3>unity 用renderDoc Debug</h3>
+<p>game窗口右上三个点，Load renderDoc</p>
+<h3>unity shader debug 宏</h3>
+<pre><code class="language-text"> #pragma enable_d3d11_debug_symbols
+</code></pre>
+<h3>保存图片切换线性和伽马</h3>
+<p><img src="/media/15a74442-e568-430d-bf0b-7c473a7c97fc.png" alt="文章配图" /></p>
+<h3>搜索</h3>
+<p><img src="/media/98c41706-2d11-42ec-9485-789b26f9cb06.png" alt="文章配图" /></p>
+<h3>该图片在哪帧使用了</h3>
+<p>右键图片，used就是使用的帧</p>
+<p><img src="/media/cf30cfe8-a254-451f-bad1-9c3ba68d2a7b.png" alt="文章配图" /></p>
+<h2>解决方案</h2>
+<h3>安卓包测试方法</h3>
+<p>先点截帧数，然后打开，手机切到renderdoc应用（此时是把刚才截帧的数据复现了），此时就可以点时间测试了（ms不行的话转成um再试一下）</p>
+<p>同时，因为涉及到每次截帧的数据会有变动，所以看比例，例如树干和树叶的比例是否有变化</p>
+<h3>vulkan 切 OpenGL</h3>
+<p>箭头移到上面</p>
+<p><img src="/media/602a9c07-fb19-4c64-a566-b0c9b8e0dbd1.png" alt="文章配图" /></p>
+<h3>逐像素debug or history</h3>
+<p>选中像素点击下方的</p>
+<!-- 原 Notion 嵌入块 333ae562-dc3d-4947-834f-84a560179627 未公开源地址 -->
+<ul>
+<li>History</li>
+</ul>
+<p>history很快就能定位到问题</p>
+<p><img src="/media/0aab5ece-2e74-4c93-b362-1bcc222b5e1b.png" alt="文章配图" /></p>
+<ul>
+<li>debug</li>
+</ul>
+<p>右下角可以看具体参数，F10还是11来着，可以类似断点测试</p>
+<p>shader里还要写上  #pragma enable_d3d11_debug_symbols  不过有时会翻车</p>
+<h3>抓mumu</h3>
+<p><img src="/media/78aa7588-7ded-46ef-a3d3-cc48aec4129a.png" alt="文章配图" /></p>
+<p><img src="/media/646695dc-6658-47d6-870c-08e85eb48911.png" alt="文章配图" /></p>
+<p><img src="/media/5940b8a1-7483-40a4-97d7-03951458e7df.png" alt="文章配图" /></p>
+<h3>CSV To Mesh</h3>
+<p>在input中右键导出csv</p>
+<p><img src="/media/837786ca-f935-40ce-8284-551a33e62a2d.png" alt="文章配图" /></p>
+<p>unity工具需要上下都导入csv</p>
+<p><img src="/media/e4a9524f-8041-46e9-ad89-6659ae5e174c.png" alt="文章配图" /></p>
+<p>工具在 《小嗯的工具宝库》</p>
+<p><a href="https://shimo.im/docs/Xxd6VpQgQX9JGVp8/">https://shimo.im/docs/Xxd6VpQgQX9JGVp8/</a></p>
+<ul>
+<li>另一种方案</li>
+</ul>
+<p><a href="https://uploader.shimo.im/f/mo46a1Rg3jC8kInf.cs">MeshEstablish.cs</a></p>
+<p><img src="/media/b52923aa-b0e9-43f4-a611-b8ef68edeb29.png" alt="文章配图" /></p>
+<p><img src="/media/408b94a9-47ae-4d14-9dc6-1551342d52b1.png" alt="文章配图" /></p>
+<p>添加对应的搜索条件</p>
+<p><img src="/media/187835e6-fd86-44a7-9768-824e348be4ff.png" alt="文章配图" /></p>
+<p><img src="/media/107a852f-9446-4de9-acbf-c63799459538.png" alt="文章配图" /></p>
+<p>csv放到脚本</p>
+<p><img src="/media/10edb20b-e8b7-44db-ac91-cc337cabb844.png" alt="文章配图" /></p>
+<p>导出</p>
+<ul>
+<li>进哥倾情推荐</li>
+</ul>
+<p><a href="https://github.com/Alunice/TaTa">https://github.com/Alunice/TaTa</a></p>
+<h2>其他参考链接</h2>
+<p><a href="http://aicdg.com/renderdoc-hlsl/">http://aicdg.com/renderdoc-hlsl/</a></p>
+<p>Unity Shader 调试 <a href="https://zhuanlan.zhihu.com/p/74622572">https://zhuanlan.zhihu.com/p/74622572</a></p>
+<p>扒模型 <a href="https://blog.csdn.net/weixin_42198546/article/details/110387643#comments_15889636">https://blog.csdn.net/weixin_42198546/article/details/110387643#comments_15889636</a></p>
+<p>带uv <a href="https://www.pudn.com/news/62ab3354dfc5ee1968759eb4.html">https://www.pudn.com/news/62ab3354dfc5ee1968759eb4.html</a></p>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/"><small>上一篇</small><strong>VFX透明描边</strong></a><a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/"><small>下一篇</small><strong>变速闪烁</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

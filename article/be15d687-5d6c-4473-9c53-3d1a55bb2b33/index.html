@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>LookDev 标准场景 | Neilyodog Blog</title>
+  <meta name="description" content="制作方法和意义">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/be15d687-5d6c-4473-9c53-3d1a55bb2b33/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LookDev 标准场景">
+  <meta property="og:description" content="制作方法和意义">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-be15d687-5d6c-4473-9c53-3d1a55bb2b33.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/be15d687-5d6c-4473-9c53-3d1a55bb2b33/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-be15d687-5d6c-4473-9c53-3d1a55bb2b33.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2022-04-28">2022-04-28</time><span class="meta-dot">·</span><a href="/category/%E5%AD%A6%E4%B9%A0%E6%80%9D%E8%80%83/">学习思考</a></div><h1>LookDev 标准场景</h1><p>制作方法和意义</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E5%9F%BA%E7%A1%80/"># 基础</a><a href="/tag/%E7%90%86%E8%AE%BA/"># 理论</a></div>
+      <div class="article-content"><h3>需求</h3>
+<ul>
+<li>
+<p>需要一个固定统一环境制作检查资产，能精确地表现美术师初衷效果（亮度，色彩，对比，质感）。资产，主要是贴图材质在任何灯光环境下都表现良好</p>
+</li>
+<li>
+<p>在不同的机器上表现一致；比如美术总监或Lead查看时和美术师（内部或外包）看到一致</p>
+</li>
+<li>
+<p>DCC环境同步；比如Substance Painter和UE之间的预览同步</p>
+</li>
+</ul>
+<p>营造这个环境不仅仅只涉及<strong>灯光</strong>，还包括<strong>曝光</strong>，<strong>Tonemapping</strong>等。后期部分较简单，全部默认；另外为准确测光暂时关闭一些屏幕特效（具体看后面），打完光后可以再开启增加效果。</p>
+<h3>方案</h3>
+<p>需要注意兼顾pbr和非pbr材质</p>
+<ul>
+<li>
+<p>准确曝光的环境</p>
+<ul>
+<li>
+<p>第一稳定：关闭自动曝光</p>
+</li>
+<li>
+<p>第二准确：参考摄影中中灰板测光的道理</p>
+<ul>
+<li><strong>创建测光对象及环境：</strong>
+<ul>
+<li>
+<p>灰板材质Default Lit；</p>
+</li>
+<li>
+<p>BaseColor = 0.18（中灰线性值，sRGB是0.46）</p>
+</li>
+<li>
+<p>Specular = 0（高光关闭为了不影响测光）</p>
+</li>
+<li>
+<p>关闭曝光（ue中的Pre Exposure）</p>
+</li>
+<li>
+<p>关闭影响亮度的后期，例如bloom</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>蕴含不同光比环境</p>
+</li>
+</ul>
+<p><strong>同时段不同天气的光比</strong></p>
+<p><strong>这个直接吸色做对比就行</strong></p>
+<p>亮度没必要，可以作为曝光补偿选项开放</p>
+<p>光色取中性（6500K）就好，主要颜色对贴图影响极大</p>
+<p>（光比是亮面和暗面之间的亮度比值，三种环境为，阴天，多云，晴朗无云即可）</p>
+<p><img src="/media/6db6e016-ffa4-4281-82f0-201efc114d37.png" alt="文章配图" /></p>
+<ul>
+<li>由于光在不同时段有不同效果，因此可以根据环境把光比分为高、中、低三类。
+<ul>
+<li>
+<p><strong>低对比软光环境</strong>有利于检查及准确还原贴图材质灰阶对比，明度，色彩；</p>
+</li>
+<li>
+<p><strong>中光比环境</strong>，除上边外还兼顾表现质感</p>
+</li>
+<li>
+<p><strong>高光比硬光环境</strong>，有利于表现质感，并作为特殊环境检查极端材质表现</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>由于目标是亮部达到0.18，根据光比参考推算出暗部目标亮度。又因为暗部仅仅受到环境光影响，因此先调节环境光（天光），同时监控阴影亮度值，直到达到暗部目标亮度；然后再调整直射光亮度，并同时监控亮部数值，直到达到0.18.</p>
+<ul>
+<li>DCC一致的预览环境
+<ul>
+<li>
+<p>同步sp和引擎效果</p>
+</li>
+<li>
+<p><strong>常见问题：</strong></p>
+<ul>
+<li>
+<p>光比大，缺少Ambient或丢失反射源</p>
+</li>
+<li>
+<p>对比强，Lut或者ToneMapping过于极端，通过渐变灰色帮助检查</p>
+</li>
+<li>
+<p>曝光不对，自动曝光在不有色明度比较极端情况下无法正确测光导致曝光失误</p>
+</li>
+<li>
+<p>Albedo暗淡或偏色，灯光、白平衡色彩倾向过重导致贴图显色性低</p>
+</li>
+<li>
+<p>质感表现不佳，反射源动态或对比度过低</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>其他参考</h3>
+<p>整合 <a href="https://zhuanlan.zhihu.com/p/394608910">https://zhuanlan.zhihu.com/p/394608910</a></p>
+<p>关于建立资产统一审查预览环境的一些说明 <a href="https://www.unrealengine.com/zh-CN/tech-blog/a-few-tips-for-building-unified-assets-reviewing-enviroment">https://www.unrealengine.com/zh-CN/tech-blog/a-few-tips-for-building-unified-assets-reviewing-enviroment</a></p>
+<h4></h4>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/ba4d06f0-4fd8-4f7f-92e0-378015d86dd3/"><small>上一篇</small><strong>原神植被渲染分析</strong></a><a href="/article/4ba39267-4fa9-4398-8cc6-e4c98b62a94a/"><small>下一篇</small><strong>优化Sin函数</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

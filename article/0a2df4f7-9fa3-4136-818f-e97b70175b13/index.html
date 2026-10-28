@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>卡渲树木制作流程 | Neilyodog Blog</title>
+  <meta name="description" content="speedTree基础">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="卡渲树木制作流程">
+  <meta property="og:description" content="speedTree基础">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-0a2df4f7-9fa3-4136-818f-e97b70175b13.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-0a2df4f7-9fa3-4136-818f-e97b70175b13.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2022-10-05">2022-10-05</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div><h1>卡渲树木制作流程</h1><p>speedTree基础</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E5%9F%BA%E7%A1%80/"># 基础</a></div>
+      <div class="article-content"><p>一切建立在“手游”“卡渲”基础上</p>
+<h2>工具部分</h2>
+<p><img src="/media/75b170eb-c982-46e3-9444-55deeb307b7c.png" alt="文章配图" /></p>
+<p>图为工具的主要用途。流程基本上是根据需求来的，所以知道工具的用途后梳理流程就很方便了。</p>
+<p>例如最基础的是 <strong>[speedTree - 引擎]</strong></p>
+<p>如果还需要处理模型法线顶点色啥的就**[speedTree - houdini - 引擎]**</p>
+<p>如果还需要手绘贴图**[speedTree - houdini - ps - 引擎]**</p>
+<p>如果还需要手动处理LOD**[speedTree - houdini - ps - max - 引擎]**</p>
+<h3>1.1 Max/Maya/Blender等 - 制作基础模型</h3>
+<p>可以做模型但真没必要，具体做法可参考<a href="https://www.bilibili.com/video/BV194411Q7qk/?vd_source=c1a70c3191fee7cd74adb1ee5580f8d4">这里</a>(不建议学)</p>
+<p><strong>主要用途：</strong></p>
+<ul>
+<li>在导入引擎之前，处理一些刁钻问题</li>
+</ul>
+<p>例如SpeedTree（下简称spt）处理或者重叠太多会有Zfighting</p>
+<p>例如spt对手游模型的lod支持并不好，需要手动处理lod</p>
+<p>当然，不排除有些定制化的手绘树用这些制作也很方便</p>
+<p><img src="/media/006e5e0a-d442-409b-b292-05ea55177f4f.png" alt="文章配图" /></p>
+<h3>1.2 Zbrush/blender等 - 制作法线贴图</h3>
+<p>不止是树干，树叶其实也可以雕刻，所以部分流程可以是</p>
+<p>[spt树干 - zb树叶高模 - max树叶低模]</p>
+<p><strong>主要用途：</strong></p>
+<ul>
+<li>制作法线贴图，增加细节</li>
+</ul>
+<p><img src="/media/20d0723b-1948-452b-90a0-df0d63314927.png" alt="文章配图" /></p>
+<h3>1.3 SpeedTree - 植被美术全流程（模型-贴图-lod）</h3>
+<p>spt做个简单的树还是很快的，当然这个<strong>并不能用！并不能用！并不能用！</strong></p>
+<p>这就快3w面了而且树叶还比较稀疏单调，树枝毫无变化（鉴定为丑）</p>
+<p><img src="/media/5cb47c32-6b2c-4c68-96cb-4cf1f39f0031.gif" alt="spt10sgif" /></p>
+<h4>1.3.1 树叶部分</h4>
+<p>首先，spt支持多种方案制作树叶的模型</p>
+<ul>
+<li>外部导入基础插片（模型，贴图手绘或者cluster）</li>
+</ul>
+<p><img src="/media/587b19ed-7803-4a7e-9424-cb67c3932fe7.png" alt="文章配图" /></p>
+<ul>
+<li>cluster（模型+贴图）</li>
+</ul>
+<p>简单讲就是**[搞到贴图 - 用spt制作小树枝 - 烘焙成贴图使用]**</p>
+<p><img src="/media/781f7ff3-0cdb-4385-90af-6ea3ea17712b.png" alt="文章配图" /></p>
+<p>大概步骤就是先弄好对应的材质，无论是bridge还是扫描等地方，当然，不想用pbr也可以手绘</p>
+<p><img src="/media/4aab9c1e-d63d-4746-8cb4-f336b20af631.png" alt="文章配图" /></p>
+<p>在spt中用节点连出高模（当然，不考虑性能可以直接上高模）</p>
+<p><img src="/media/01eba1a0-ac58-4182-b944-1d399e5e6afc.png" alt="文章配图" /></p>
+<p>然后烘焙成贴图</p>
+<p><img src="/media/4dc4c07a-de59-4e6d-86dd-fc0384ef79dc.png" alt="文章配图" /></p>
+<h4>1.3.2 LOD部分</h4>
+<p>其实对于3a来说比较美好</p>
+<p>但对于面数很少的手游来说，轮廓的形变还是挺大的，会有跳变，具体用不用就看项目了</p>
+<!-- 原 Notion 嵌入块 7f757cce-ee0d-49fb-931c-0200e803db0e 未公开源地址 -->
+<h4>1.3.3 collision</h4>
+<p>同上，这里也是，在面树比较高的情况下支持比较好、</p>
+<p><img src="/media/f262bd09-7ef2-4e2b-b42a-b717e32daee4.gif" alt="Collision1gif" /></p>
+<p><img src="/media/a0f229bc-c7ef-4517-9f63-3f63b1520eac.gif" alt="Collision2gif" /></p>
+<h3>1.4 houdini插片</h3>
+<p>在接触spt之前还写了个简单的撒点工具去处理插片。用过之后就发现，效率并不如spt，因为当时只考虑了两层，而且越多层就会越复杂，且没法做非常符合生长规律的树叶（会有悬空）</p>
+<p>这棵树的制作流程就是 <strong>[spt制作树干 - houdini工具生成树叶 - 偷来原神的贴图]</strong></p>
+<p><video controls preload="metadata" src="/media/5d3ff268-8434-43d9-a873-095d30958e5e.mp4"></video></p>
+<p><img src="/media/29d5db04-5ca7-4fcf-8cc5-718d7269dbe7.gif" alt="houdiniTree2gif" /></p>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/627404f1-9b81-4f89-9a60-38ad32b45e04/"><small>上一篇</small><strong>renderFeature 基础</strong></a><a href="/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/"><small>下一篇</small><strong>传递函数</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

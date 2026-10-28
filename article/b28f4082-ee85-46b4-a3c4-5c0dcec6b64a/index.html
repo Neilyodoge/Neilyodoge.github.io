@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>传递函数 | Neilyodog Blog</title>
+  <meta name="description" content="也就是熟知的伽马矫正">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="传递函数">
+  <meta property="og:description" content="也就是熟知的伽马矫正">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-b28f4082-ee85-46b4-a3c4-5c0dcec6b64a.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/b28f4082-ee85-46b4-a3c4-5c0dcec6b64a/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-b28f4082-ee85-46b4-a3c4-5c0dcec6b64a.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2022-11-15">2022-11-15</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div><h1>传递函数</h1><p>也就是熟知的伽马矫正</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E6%B8%B2%E6%9F%93/"># 渲染</a><a href="/tag/%E7%90%86%E8%AE%BA/"># 理论</a></div>
+      <div class="article-content"><h3>传递函数是啥</h3>
+<p>传递函数(or gamma)有助于更好的编码bits，从而提高性能。有两个传递函数</p>
+<ul>
+<li>
+<p>**OETF：**光电传递函数，通常在相机内讲线性场景光转化为视频信号。（encode）</p>
+</li>
+<li>
+<p>**EOTF：**电光传递函数，将视频信号转化成显示器的线性光输出。（decode）</p>
+</li>
+</ul>
+<p><img src="/media/3a7d3bbc-5b88-441d-aa92-a84758268a4e.png" alt="文章配图" /></p>
+<h3>传递函数在哪个位置</h3>
+<p>基于ACEScg workflow</p>
+<p><img src="/media/d489d14f-7831-4f91-8ae6-e17e58ce34d7.png" alt="文章配图" /></p>
+<p><strong>ODT，即OETF和EOTF</strong>（引自<a href="https://zhuanlan.zhihu.com/p/437398596">PZZZB对 HDR in Call of Duty 的总结</a>）</p>
+<p>其实我个人更倾向于EOTF在ODT之中，而OETF在IDT之中。因为只有在IDT中才需要光电转化</p>
+<p>当然，这里ODT并不适只有EOTF，而是还有很多设置诸如：白点、颜色空间属性等</p>
+<p>颜色空间属性就是 图像状态和观察状态</p>
+<p>例如：sRGB就是PC端常用的，为明亮的办公环境准备</p>
+<p>Rec.709就是TV常用的，为昏暗的家庭影院准备</p>
+<p>这也是为什么上图有sRGB和Rec.709两条曲线的原因，不同设备用的是不同的传递函数</p>
+<h3>2.2怎么来的</h3>
+<p>其实看上面曲线也可以看出来，不一定是2.2，当年老式的CRT显示器内置Gamma为2.35左右。</p>
+<p>所以ACES的其中一个牛逼之处就在于上面说的 <strong>颜色空间属性</strong>即根据不同设备和环境进行调整。</p>
+<p>甚至某自研直接用的2也不是不行。</p>
+<p>那么回到这个话题，为啥是2.2？是具体实验定下来的，眼睛的感受曲线非常趋近于2.2。包括摄影里的中灰色卡，为20%左右，趋近于pow(0.5,2.2)≈0.218的结果</p>
+<h3>必要性</h3>
+<p>总之一句话：灰阶有限的前提下，因为人眼对自然的非线性感知特性，我们才需要Gamma校正。</p>
+<p><img src="/media/4a3e6536-3a07-4949-a536-601377781c54.png" alt="文章配图" /></p>
+<p><img src="/media/dfcb81b8-f12f-4904-90f0-9a1b1c50a581.png" alt="文章配图" /></p>
+<p>出自 <a href="https://substance3d.adobe.com/tutorials/courses/the-pbr-guide-part-1">SubstancePBR</a></p>
+<p>人眼的主要光线感知细胞</p>
+<p>视锥细胞在较高的光照水平下是活跃的，能够进行色觉并负责高空间的敏锐度</p>
+<p><a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/rodcone.html">视杆细胞</a>对于黑暗环境的感光非常敏感，但对颜色并不敏感</p>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/0a2df4f7-9fa3-4136-818f-e97b70175b13/"><small>上一篇</small><strong>卡渲树木制作流程</strong></a><a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/"><small>下一篇</small><strong>VFX透明描边</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101111">
+  <title>枪械相关效果迭代 | Neilyodog Blog</title>
+  <meta name="description" content="枪械相关内容">
+  <link rel="canonical" href="https://neilyodoge.github.io/article/bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2/">
+  <link rel="icon" type="image/jpeg" href="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="枪械相关效果迭代">
+  <meta property="og:description" content="枪械相关内容">
+  <meta property="og:image" content="https://neilyodoge.github.io/media/cover-bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2.jpg">
+  <meta property="og:url" content="https://neilyodoge.github.io/article/bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="">
+  <header class="topbar">
+    <a class="brand" href="/">Neilyodog Blog</a>
+    <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <a href="/search/">搜索</a>
+      <a href="/archive/">归档</a>
+      <a href="/category/">分类</a>
+      <a href="/tag/">标签</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+<div class="article-hero" style="--article-image: url('/media/cover-bdbee6c8-f0f0-4c80-8b18-6dfbf7d571f2.jpg')">
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="2021-01-25">2021-01-25</time><span class="meta-dot">·</span><a href="/category/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></div><h1>枪械相关效果迭代</h1><p>枪械相关内容</p></div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags"><a href="/tag/%E6%95%88%E6%9E%9C/"># 效果</a><a href="/tag/%E4%BC%98%E5%8C%96/"># 优化</a><a href="/tag/%E6%95%88%E6%9E%9C%E6%8F%90%E5%8D%87/"># 效果提升</a></div>
+      <div class="article-content"><h3>1.效果展示</h3>
+<p><img src="/media/13415516-9fb5-4797-83a8-2e8b933efbd5.png" alt="文章配图" /></p>
+<p><img src="/media/c7f08e67-9a03-49c7-87b1-2cf49a8f1566.png" alt="文章配图" /></p>
+<p><img src="/media/f52e2c68-dd09-41cf-b188-6448e244cf8d.png" alt="文章配图" /></p>
+<p><img src="/media/e54bce76-93d2-4c6d-b61d-cc065938c46c.png" alt="文章配图" /></p>
+<p><img src="/media/26e7486c-b087-4ddf-b7e5-ba9fb8775334.png" alt="文章配图" /></p>
+<p><img src="/media/1e940255-72d1-4d22-a4fe-cd1873010275.png" alt="文章配图" /></p>
+<p><video controls preload="metadata" src="/media/b6c29691-daa3-4dc4-b195-db571d5fc438.mp4"></video></p>
+<p><img src="/media/41b29ad2-8217-496f-a2d5-d0b9270f2ec7.gif" alt="MulUVgif" /></p>
+<p><img src="/media/2e246346-a9b6-4db4-9a93-d71e1ac15b4e.gif" alt="Unitygif" /></p>
+<h3>2.思路</h3>
+<h4>2.1染色部分</h4>
+<ul>
+<li><strong>美术部分</strong></li>
+</ul>
+<p>主要参考一些cod的染色效果。制作一套染色方案。</p>
+<p>磨损部分多用了张sp烘焙的边界图，加上常规的smoothstep去柔化溶解边界</p>
+<p><img src="/media/2f551097-635f-4e1d-966c-2b7ae568a102.png" alt="文章配图" /></p>
+<p>本身的sp源文件也进行了调整，从一个全新的效果，照着下图调了一个偏蓝一丢丢，枪身有划痕的效果</p>
+<p><img src="/media/95e4abc2-2cf2-4780-8691-570cb3d83f0f.png" alt="文章配图" /></p>
+<p><img src="/media/e8a2af5a-54e7-4180-a46e-479e4c754ca3.png" alt="文章配图" /></p>
+<p><img src="/media/25133d67-441c-4739-a659-14fa10e390f8.png" alt="文章配图" /></p>
+<ul>
+<li>材质部分</li>
+</ul>
+<p>如果正常走uv tiling染色的话，边缘经常会有问题</p>
+<p><img src="/media/048efdd2-5d0f-45f0-bf19-016d7f40eb05.png" alt="文章配图" /></p>
+<p>所以这边参考了 三向映射的方法，原理就是用WS的xy，xz，yz轴向形成的平面进行采样，然后插值混合</p>
+<p>（效果图找不到了，想想一下，枪左和枪右完全重合中间接缝也完全重合）</p>
+<h4>2.2假贴花部分</h4>
+<p>首先这个是逐材质的(省？)，原理就是用local的红绿坐标轴作为uv重新采样，贴图模式clamp。</p>
+<p><img src="/media/1667ee93-1f69-4cfe-b91f-57737c407a90.png" alt="文章配图" /></p>
+<p>另外说一下csgo的贴花刮除，这个非常简单，就是定制一张图，确定好每次需要刮除的范围</p>
+<p><img src="/media/062f0ffe-9370-403c-91c9-170129386216.gif" alt="GIFgif" /></p>
+<p>然后增加一下变化，sd随便拉个划痕</p>
+<p><img src="/media/500709bf-997c-41ff-b77b-0fd289367ed7.png" alt="文章配图" /></p>
+<h4>2.3瞄具部分</h4>
+<p><a href="https://shimo.im/docs/rtYVrjyCpVwkgxhd/">https://shimo.im/docs/rtYVrjyCpVwkgxhd/</a> 《光学瞄具》</p>
+<h4>2.4优化部分</h4>
+<p><a href="https://shimo.im/docs/v3VPxyDDyCQWcqwr/">https://shimo.im/docs/v3VPxyDDyCQWcqwr/</a> 《3U提高模型精度》</p>
+<p>用3U的方式省了一倍的贴图大小</p>
+<p><img src="/media/e1ea7358-dac5-4676-9157-d0e9e9aeb713.png" alt="文章配图" /></p>
+<p><img src="/media/f0a2f7bc-d0ec-42cb-b125-54e81c839730.png" alt="文章配图" /></p>
+<h4>2.5美术部分</h4>
+<ul>
+<li>颜色方面</li>
+</ul>
+<p>cod枪械变化还是比较大的。老版本会看起来油一些，但实际上是对的，因为经常会摸枪油</p>
+<p>后期基本上就是体现一个高级感，玩家看着帅就完事</p>
+<p><img src="/media/d0325d07-1c58-4940-99f8-73d2496440df.gif" alt="枪油摸多了gif" /></p>
+<p><img src="/media/d3ab6cf1-df1e-493c-aeeb-11ef87c90ee5.png" alt="文章配图" /></p>
+<p><img src="/media/ea64d4e2-fe90-4f86-9c73-43e1a6314fa0.png" alt="文章配图" /></p>
+<ul>
+<li>布线方面</li>
+</ul>
+<p>倒角一定要锐利精致（硬表面精髓）</p>
+<p><img src="/media/cc0c91c6-53ef-401f-ad2d-a8c3d9ef5cbd.png" alt="文章配图" /></p>
+<p><img src="/media/d42f93d2-792e-435c-94c0-bd7c122e71d6.png" alt="文章配图" /></p>
+<p>平滑后结果</p>
+<p><img src="/media/af1ce41d-e602-4bf5-aac5-d834914fbe00.png" alt="文章配图" /></p>
+<p><img src="/media/bc9c4469-1b5f-4edc-b2dc-350b633bc06e.png" alt="文章配图" /></p>
+<ul>
+<li>UV部分</li>
+</ul>
+<p>不要吝啬面朝第一人称的uv，请将至少一半的UV面级分配给第一人称朝向的面，贴图绘制时候需要看第一人称角度。确保不出现明显精度不足的情况</p>
+<p><img src="/media/42c40597-1954-4540-a3ef-519baefb1ff7.png" alt="文章配图" /></p>
+<ul>
+<li>对比</li>
+</ul>
+<p>改后的效果。和平精英有个很有意思的操作，把ao放在Albedo里面了，虽然这很不pbr，但在任意光源下体积感都很好。ao放进baseColor最直观的表现就是体积感</p>
+<p><img src="/media/612c3e75-9c91-4dfe-b7ba-261d5d3f3c1f.png" alt="文章配图" /></p>
+</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+<a href="/article/9e4ab212-315e-4773-b6fc-f7a7558ff2de/"><small>上一篇</small><strong>模拟光学瞄具 </strong></a><a href="/article/5d737f3f-fe0d-4a6b-8422-08393a49cf86/"><small>下一篇</small><strong>半透明剔除Dither</strong></a>    </nav>
+  </div>
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="/media/collection-icon-ab376694-2204-40a0-9a1e-86920643bc4d.jpg" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>喜欢而已</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>20</strong><span>文章</span></a>
+      <a href="/category/"><strong>4</strong><span>分类</span></a>
+      <a href="/tag/"><strong>11</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      <a href="/article/ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113/" class="recent-item">
+<img src="/thumbs/cover-ae5eaf0f-bb5c-457e-bd61-8ee93b6f9113.webp" alt="" loading="lazy">        <span><strong>效果分享</strong><small>2023-02-09</small></span>
+      </a>
+      <a href="/article/63eaed30-f672-4fbe-8dcb-70fc17a8b92a/" class="recent-item">
+<img src="/thumbs/cover-63eaed30-f672-4fbe-8dcb-70fc17a8b92a.webp" alt="" loading="lazy">        <span><strong>小嗯的Unity光照文档</strong><small>2023-02-08</small></span>
+      </a>
+      <a href="/article/d1a23618-6182-4906-8895-982df57c1ef5/" class="recent-item">
+<img src="/thumbs/cover-d1a23618-6182-4906-8895-982df57c1ef5.webp" alt="" loading="lazy">        <span><strong>变速闪烁</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/26660057-7224-44c1-97b4-d098fc6cb662/" class="recent-item">
+<img src="/thumbs/cover-26660057-7224-44c1-97b4-d098fc6cb662.webp" alt="" loading="lazy">        <span><strong>Renderdoc</strong><small>2023-02-07</small></span>
+      </a>
+      <a href="/article/bb6393c7-cb5a-4d9a-80ba-9d26d641a246/" class="recent-item">
+<img src="/thumbs/cover-bb6393c7-cb5a-4d9a-80ba-9d26d641a246.webp" alt="" loading="lazy">        <span><strong>VFX透明描边</strong><small>2023-01-11</small></span>
+      </a>
+    </div>
+  </section>
+</aside></main>
+  <footer class="footer">
+    <span>© Neilyodog Blog · 喜欢而已</span>
+    <span><a href="/archive/">文章归档</a> · <a href="https://github.com/Neilyodoge" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>
