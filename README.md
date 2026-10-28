@@ -35,7 +35,9 @@ source_id: example-post
 
 ## 部署
 
-仓库内有 GitHub Actions 工作流。将源码推送到 `Neilyodoge/Neilyodoge.github.io` 的 `main` 分支后，需要在仓库 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**。之后每次推送会自动构建并发布到 `https://neilyodoge.github.io/`。
+当前仓库的 `main` 分支从根目录直接提供旧站。本次可编辑源码放在 `rebuild-static-blog` 分支，编译好的站点放在 `publish-static-site` 分支。审核后将 `publish-static-site` 合并或快进到 `main`，即可由现有 GitHub Pages 设置发布。
+
+源码内也带有 GitHub Actions 工作流。如果之后希望改成每次提交 Markdown 自动构建，需要将源码放到 `main`，并在仓库 **Settings → Pages → Build and deployment** 中选择 **GitHub Actions**。这属于后续部署方式调整。
 
 原 Hexo 的 11 个文章路径已生成跳转页；当前 NotionNext 的 19 个 `/article/<UUID>/` 路径也沿用 UUID。旧 Vercel 域名上的跨域跳转需要另行修改该域名的部署配置。
 
