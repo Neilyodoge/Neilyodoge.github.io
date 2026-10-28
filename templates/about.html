@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="shell inner-shell">
+  <section class="panel main-column about-panel">
+    <div class="page-heading"><span class="eyebrow">ABOUT</span><h1>关于</h1></div>
+    <img src="{{ avatar }}" alt="Neilyodog 的头像" class="about-avatar">
+    <h2>Neilyodog</h2><p>{{ site_desc }}。</p>
+    <p>这里记录图形、渲染、Unity 与日常制作中的学习和尝试。</p>
+    <p>内容从旧博客与公开笔记整理而来，文章图片和视频由本站直接提供。</p>
+    <div class="about-links"><a href="{{ github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.artstation.com/neilyodog" target="_blank" rel="noopener noreferrer">ArtStation ↗</a></div>
+  </section>
+  {% include "_sidebar.html" %}
+</main>
+{% endblock %}

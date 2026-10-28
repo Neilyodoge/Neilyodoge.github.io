@@ -1,0 +1,24 @@
+<aside class="sidebar">
+  <section class="side-card profile">
+    <img class="avatar" src="{{ avatar }}" alt="Neilyodog 的头像" loading="lazy">
+    <h2>Neilyodog</h2>
+    <p>{{ site_desc }}</p>
+    <div class="profile-stats">
+      <a href="/archive/"><strong>{{ post_count }}</strong><span>文章</span></a>
+      <a href="/category/"><strong>{{ category_count }}</strong><span>分类</span></a>
+      <a href="/tag/"><strong>{{ tag_count }}</strong><span>标签</span></a>
+    </div>
+    <a class="profile-link" href="{{ github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </section>
+  <section class="side-card">
+    <h2 class="side-title">最新文章</h2>
+    <div class="recent-list">
+      {% for item in recent %}
+      <a href="{{ item.url }}" class="recent-item">
+        {% if item.cover %}<img src="{{ item.thumbnail }}" alt="" loading="lazy">{% endif %}
+        <span><strong>{{ item.title }}</strong><small>{{ item.date }}</small></span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+</aside>

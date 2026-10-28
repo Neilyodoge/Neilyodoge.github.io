@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "_macros.html" import post_card %}
+{% block content %}
+<main class="shell inner-shell">
+  <section class="main-column">
+    <div class="panel listing-heading"><span class="eyebrow">{{ listing_kind }}</span><h1>{{ listing_title }}</h1><p>共 {{ listing_posts|length }} 篇文章</p></div>
+    <div class="post-grid">{% for post in listing_posts %}{{ post_card(post) }}{% endfor %}</div>
+  </section>
+  {% include "_sidebar.html" %}
+</main>
+{% endblock %}

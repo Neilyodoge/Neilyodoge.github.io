@@ -1,0 +1,13 @@
+{% macro post_card(post) -%}
+<article class="post-card">
+  <a class="post-cover" href="{{ post.url }}" aria-label="阅读 {{ post.title }}">
+    {% if post.cover %}<img src="{{ post.thumbnail }}" alt="" loading="lazy">{% else %}<span class="cover-fallback">N.</span>{% endif %}
+  </a>
+  <div class="post-card-body">
+    <div class="post-meta"><time datetime="{{ post.date }}">{{ post.date }}</time><span class="meta-dot">·</span><a href="{{ post.category_url }}">{{ post.category }}</a></div>
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <p>{{ post.summary|truncate(100, True, '…') }}</p>
+    <a class="read-more" href="{{ post.url }}">阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article>
+{%- endmacro %}

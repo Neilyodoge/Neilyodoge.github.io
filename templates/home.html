@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_macros.html" import post_card %}
+{% block body_class %}home-page{% endblock %}
+{% block content %}
+<section class="hero" style="--hero-image: url('{{ hero }}')">
+  <div class="hero-shade"></div>
+  <div class="hero-content"><h1>{{ site_title }}</h1><p>{{ site_desc }} 🌞</p></div>
+  <a class="hero-down" href="#articles" aria-label="前往文章列表">⌄</a>
+</section>
+<main class="shell home-shell" id="articles">
+  <div class="main-column">
+    <div class="section-heading"><div><span class="eyebrow">WRITING & NOTES</span><h2>最新文章</h2></div><a href="/archive/">查看归档 →</a></div>
+    <div class="post-grid">{% for post in posts %}{{ post_card(post) }}{% endfor %}</div>
+  </div>
+  {% include "_sidebar.html" %}
+</main>
+{% endblock %}

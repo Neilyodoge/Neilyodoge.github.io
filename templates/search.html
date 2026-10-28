@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="shell inner-shell">
+  <section class="panel main-column search-panel">
+    <div class="page-heading"><span class="eyebrow">FIND SOMETHING</span><h1>搜索</h1><p>在标题、分类、标签和正文中查找。</p></div>
+    <label class="search-box"><span class="sr-only">搜索文章</span><input id="search-input" type="search" placeholder="输入关键词…" autofocus autocomplete="off"><span aria-hidden="true">⌕</span></label>
+    <p id="search-status" class="search-status">输入关键词开始搜索</p>
+    <div id="search-results" class="search-results" aria-live="polite"></div>
+  </section>
+  {% include "_sidebar.html" %}
+</main>
+{% endblock %}

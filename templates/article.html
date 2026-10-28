@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="article-hero" {% if post.cover %}style="--article-image: url('{{ post.cover }}')"{% endif %}>
+  <div class="article-hero-shade"></div>
+  <div class="article-hero-content"><div class="post-meta"><time datetime="{{ post.date }}">{{ post.date }}</time><span class="meta-dot">·</span><a href="{{ post.category_url }}">{{ post.category }}</a></div><h1>{{ post.title }}</h1>{% if post.summary %}<p>{{ post.summary }}</p>{% endif %}</div>
+</div>
+<main class="shell article-shell">
+  <div class="main-column">
+    <article class="panel article-panel">
+      <div class="article-tags">{% for tag in post.tag_links %}<a href="{{ tag.url }}"># {{ tag.name }}</a>{% endfor %}</div>
+      <div class="article-content">{{ post.html|safe }}</div>
+      <div class="article-end"><span>— END —</span></div>
+    </article>
+    <nav class="post-neighbors" aria-label="相邻文章">
+      {% if older %}<a href="{{ older.url }}"><small>上一篇</small><strong>{{ older.title }}</strong></a>{% endif %}
+      {% if newer %}<a href="{{ newer.url }}"><small>下一篇</small><strong>{{ newer.title }}</strong></a>{% endif %}
+    </nav>
+  </div>
+  {% include "_sidebar.html" %}
+</main>
+{% endblock %}
